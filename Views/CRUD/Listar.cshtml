@@ -1,0 +1,60 @@
+﻿@model List<ModelPelicula>
+
+
+@{
+    ViewData["Title"] = "Listar";
+}
+
+@using (Html.BeginForm()) //NECESARIO PARA EL BUSCADOR
+{
+
+<div class="card" style="background-color:#16161F">
+    <div class="card-header">
+        <div style="font-family:Helvetica; font-size:30px; color:#445EF2; margin-bottom:10px;">
+            Listado de películas
+            <a asp-action="Agregar" asp-controller="CRUD" class="btn" style="background-color:#42378C; color:white; margin-left:10px;"> Agregar Película</a>
+            <div class="d-flex" style=" margin-top:5px; float:right;">
+
+               @Html.Editor("txtSearch", new { htmlAttributes = new {@class = "form-control", placeholder = "Buscar por título"}})                 
+                <input type="submit" value="Buscar" class="btn btn-outline-primary" style="margin-left:10px;"/>
+            </div>
+
+
+
+        </div>
+
+        <table class="table table-striped table-dark table-hover " style="width:100%;  color:#FFFFFF;  ">
+            <thead>
+                <tr>
+                    <th>TÍTULO</th>
+                    <th>DIRECTOR</th>
+                    <th>CATEGORÍA</th>
+                    <th>CALIFICACIÓN</th>
+                    <th>AÑO DE ESTRENO </th>
+                    <th></th>
+
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr style="height:40px;">
+                        <td>@item.titulo</td>
+                        <td>@item.director</td>
+                        <td>@item.categoria</td>
+                        <td>@item.calificacion</td>
+                        <td>@item.fechaEstreno.Year </td>
+                        <td style="width:145px;">
+                            <a style="background-color: #3345A6; color:white; " asp-action="Editar" asp-controller="CRUD" class="btn btn-sm" asp-route-id="@item.id">Editar</a>
+                            <a style="background-color: #293473; color:white;" asp-action="Eliminar" asp-controller="CRUD" class="btn btn-sm" asp-route-id="@item.id">Eliminar</a>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
+}

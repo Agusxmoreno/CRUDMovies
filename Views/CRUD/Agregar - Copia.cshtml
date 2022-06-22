@@ -1,0 +1,51 @@
+﻿@model ModelPelicula
+
+@{
+    ViewData["Title"] = "Agregar Película";
+}
+
+
+<div class="card"  style="background-color:#16161F">
+    
+    <div class="card-header" style="font-family:Helvetica; font-size:30px; color:#445EF2; margin-bottom:10px;">Agregar Película</div>
+    <div class="card-body"  style="font-family:Helvetica; color:white; margin-bottom:10px;">
+
+        <form asp-action="Agregar" asp.controller="CRUD" method="post">
+            <div class="mb-3">
+                <label class="form-label">Título</label>
+                <input asp-for="titulo" type="text" class="form-control">
+                <span asp-validation-for="titulo" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Director</label>
+                <input asp-for="director" type="text" class="form-control">
+                <span asp-validation-for="director" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Categoría</label>
+                 <input asp-for="categoria" type="text" class="form-control">
+                <span asp-validation-for="categoria" class="text-danger"></span>
+            
+            </div>
+
+             <div class="mb-3">
+                  <label class="form-label">Calificación (1-10)</label>
+                <input asp-for="calificacion" type="text" class="form-control">
+                <span asp-validation-for="calificacion" class="text-danger"></span>
+            </div>
+             <div class="mb-3">
+                <label class="form-label">Fecha de Estreno (YYYY/MM/DD)</label>
+                <input asp-for="fechaEstreno" type="text" class="form-control">
+                <span asp-validation-for="fechaEstreno" class="text-danger"></span>
+            </div>
+
+
+            <button type="submit" class="btn" style="background-color: #3345A6; color:white;">Agregar</button>
+            <a asp-action="Listar" asp-controller="CRUD" class="btn" style="background-color:#293473; color:white;">Volver</a>
+        </form>
+
+
+    </div>
+</div>
+

@@ -1,0 +1,21 @@
+﻿@model ModelPelicula
+@{
+    ViewData["Title"] = "Eliminar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card"  style="background-color:#16161F">
+    <h5 class="card-header"  style="font-family:Helvetica; font-size:30px; color:#445EF2; margin-bottom:10px;">Eliminar Película</h5>
+    <div class="card-body" style="font-family:Helvetica; color:white;" >
+        <form asp-action="Eliminar" asp.controller="CRUD" method="post">
+            <input asp-for="id" type="hidden" class="form-control" />
+            <div class="alert alert-danger" role="alert">
+                ¿Está seguro de que desea eliminar la película: @Html.DisplayTextFor(m => m.titulo)?
+            </div>
+
+              <button type="submit" class="btn" style="background-color: #3345A6; color:white;">Eliminar</button>
+            <a asp-action="Listar" asp-controller="CRUD" class="btn" style="background-color:#293473; color:white;">Volver</a>
+
+        </form>
+    </div>
+</div>
